@@ -47,11 +47,11 @@ html {
 }
 
 .segundo-banner{
-    background-image: linear-gradient(90deg, rgb(83, 249, 172, 1) 0%, rgba(37, 176, 102, 0.445)100%), url(img/bg-room.png);
+    background-image: linear-gradient(90deg, rgb(83, 185, 249) 0%, rgba(41, 170, 240, 0.445)100%), url(img/bg-room.png);
 }
 
 .terceiro-banner{
-    background-image: linear-gradient(90deg, rgba(104, 24, 48, 1) 0%, rgba(53, 24, 104, 0.8)100%), url(img/bg-room.png);
+    background-image: linear-gradient(90deg, rgba(222, 13, 76, 0.966) 0%, rgba(23, 223, 190, 0.8)100%), url(img/bg-room.png);
 }
 
 #botao-voltar, #botao-proximo {
@@ -76,6 +76,40 @@ html {
 #botao-proximo {
     right: 4%;
 }
+
+.botoes {
+    width: 150px;
+
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+
+    position: absolute;
+    bottom: 4%; 
+
+    /* centralizar usando position 
+    adicionar left 50%
+    usar funcao calc() para subtrair metade da largura do elemento ex.: 75px */
+
+    left: calc(50% - 75px);
+}
+
+.botoes button svg {
+    fill: #ffffff76;
+}
+
+.botoes button {
+    width: 30px;
+
+    display: unset;
+
+    background: none;
+    border: none;
+    cursor: pointer;
+}
+
+
+
 
 header {
     height: 165px;
