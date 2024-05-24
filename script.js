@@ -111,3 +111,30 @@ function selecionarSlide(indiceSlide) {
     banner.classList.add(slides[slideAtual])
 
 }
+
+// carregamento dinamico dos cases 
+let listaCases = [
+    , 
+]
+
+function renderizarCases() {
+    // Encontrar o elemento para inserir os cards
+    let containerCards = document.querySelector(".container-cards")
+
+    // variavel para guaradar o html dos cases monstados
+    let template = ""
+
+    // Para cada case da listaCases
+    listaCases.forEach(cardCase  => {
+        // montar o html do card, passando os atributos do case
+        template += `<div class="card">
+        <img src=${ cardCase.imagem } alt="">
+        <p>${ cardCase.descricao }</p>
+        <button>Ver Mais</button>
+    </div>`
+
+    })
+    
+    // inserir html dos cases montados no elemento container-cards
+    containerCards.innerHTML = template
+}
