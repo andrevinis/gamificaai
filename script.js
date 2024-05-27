@@ -138,3 +138,64 @@ function renderizarCases() {
     // inserir html dos cases montados no elemento container-cards
     containerCards.innerHTML = template
 }
+
+function carregarCases() {
+    // método HTTP GET - Read/Leitura - Serve para mostrar um item ou uma lista de itens 
+    fetch("http://localhost:3000/cases")
+
+    // Deserialization - desserialização
+    .then( (resposta) => resposta.json() )
+    .then( (dadosTratados) => {
+        console.log(dadosTratados)
+        listaCases = dadosTratados
+        renderizarCases()
+    })
+}
+
+function solicitarOrcamento(event) {
+    // pegar os valores dos inputs 
+    let valorNome = document.getElementById("campo-nome").value 
+    let valorEmail = document.getElementById("campo-email").value 
+    let valorDescricao = document.getElementById("campo-texto").value 
+
+    // organizar os valores em um objeto
+
+    let dadosForm = {
+        nome: valorNome,
+        email: valorEmail,
+        descricao: valorDescricao 
+    }
+
+    console.log(dadosForm)
+
+    // Enviar a requisição para a API
+    // Metodo HTTP POST - Create/Criar -> Cadastrar um novo registro (solicitacao)
+    fetch("http://localhost:3000/solicitacoes", {
+        method: "POST",
+        headers: {
+            "Content-Type": "application/json"
+        }, 
+        body: JSON.stringify(dadosForm)
+    })
+        // Caso Sucesso
+        .then(resposta => {
+            console.log(resposta);
+            // Limpar os imputs
+            document.querySelector("#contato form")
+
+            // Mostrar um alert de sucesso
+            alert("Solicitação enviada com sucesso!!! ╰(*°▽°*)╯")
+        })
+
+        // Caso Erro
+        .catch(erro => {
+            console.log(erro)
+
+            // Mostrar um alert com msg de erro 
+            alert("Erro na requisição ƪ(˘⌣˘)ʃ")
+
+
+        })
+
+            event.preventDefault()
+}
